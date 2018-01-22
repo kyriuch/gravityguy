@@ -11,6 +11,9 @@ public class GravityChanger : MonoBehaviour {
 	public SpriteRenderer[] GhostsSpriteRenderers;
 	public ScrollingBackground ObstaclesScrollingBackgrounds;
 
+	public ParticleSystem LowerParticleSystem;
+	public ParticleSystem HigherParticleSystem;
+
 	public static bool started = false;
 
     private Rigidbody2D rb;
@@ -26,8 +29,53 @@ public class GravityChanger : MonoBehaviour {
 	
     void FixedUpdate()
     {
-        grounded = Physics2D.OverlapCircle(GroundCheck[SpriteRednerer.flipY ? 1 : 0].position, groundRadius, GroundMask);
-    }
+        
+		if(grounded = Physics2D.OverlapCircle(GroundCheck[SpriteRednerer.flipY ? 1 : 0].position, groundRadius, GroundMask))
+		{
+			if(SpriteRednerer.flipY)
+			{
+				if(LowerParticleSystem.emission.enabled)
+				{
+					var emission = LowerParticleSystem.emission;
+					emission.enabled = false;
+				}
+
+				if (!HigherParticleSystem.emission.enabled)
+				{
+					var emission = HigherParticleSystem.emission;
+					emission.enabled = true;
+				}
+			}
+			else
+			{
+				if (!LowerParticleSystem.emission.enabled)
+				{
+					var emission = LowerParticleSystem.emission;
+					emission.enabled = true;
+				}
+
+				if (HigherParticleSystem.emission.enabled)
+				{
+					var emission = HigherParticleSystem.emission;
+					emission.enabled = false;
+				}
+			}
+		}
+		else
+		{
+			if (LowerParticleSystem.emission.enabled)
+			{
+				var emission = LowerParticleSystem.emission;
+				emission.enabled = false;
+			}
+
+			if (HigherParticleSystem.emission.enabled)
+			{
+				var emission = HigherParticleSystem.emission;
+				emission.enabled = false;
+			}
+		}
+	}
 
 	// Update is called once per frame
 	void Update ()
