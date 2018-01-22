@@ -182,6 +182,15 @@ MonoBehaviour:
   GroundCheck:
   - {fileID: 4735288662379544}
   - {fileID: 4978449855208954}
+  GhostsGameObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GhostsSpriteRenderers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ObstaclesScrollingBackgrounds: {fileID: 0}
 --- !u!212 &212651206647047398
 SpriteRenderer:
   m_ObjectHideFlags: 1
