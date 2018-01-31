@@ -10,11 +10,10 @@ public class GameManager : MonoBehaviour {
     {
         ObstaclesMover.started = false;
         ScrollingBackground.started = false;
+		ScrollingObstacles.started = false;
 		GravityChanger.started = false;
         Physics2D.gravity = new Vector2(Physics2D.gravity.x, Mathf.Abs(Physics2D.gravity.y) * -1);
         SceneManager.LoadScene(1, LoadSceneMode.Single);
-
-        
     }
 
     public void Start()

@@ -5,7 +5,7 @@ using System.Collections;
 
 public class GameStarter : MonoBehaviour {
 
-    public ScrollingBackground Obstacles;
+    public ScrollingObstacles Obstacles;
 
     public TextMeshProUGUI TextMesh;
 	public TextMeshProUGUI TimerMesh;
@@ -58,6 +58,7 @@ public class GameStarter : MonoBehaviour {
         ObstaclesMover.started = true;
         ScrollingBackground.started = true;
 		GravityChanger.started = true;
+		ScrollingObstacles.started = true;
 
         startTime = Time.time;
 
@@ -66,6 +67,6 @@ public class GameStarter : MonoBehaviour {
 
     private void increaseSpeed()
     {
-        Obstacles.ScrollingSpeed += 0.025f;
+        Obstacles.ObstaclesSpeed += 0.025f;
     }
 }

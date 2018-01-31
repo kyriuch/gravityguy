@@ -128,7 +128,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1447199671961398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.024, y: -3.226, z: 0}
+  m_LocalPosition: {x: 0.024, y: -2.163, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4735288662379544}
@@ -255,6 +255,10 @@ MonoBehaviour:
   ObstaclesScrollingBackgrounds: {fileID: 0}
   LowerParticleSystem: {fileID: 198412777780937638}
   HigherParticleSystem: {fileID: 198331787182727648}
+  JumpEffects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!198 &198331787182727648
 ParticleSystem:
   m_ObjectHideFlags: 1

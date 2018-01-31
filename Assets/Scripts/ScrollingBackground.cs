@@ -24,7 +24,7 @@ public class ScrollingBackground : MonoBehaviour {
         if(started)
         {
             for (int i = 0; i < Background.Length; i++)
-                Background[i].Translate(ScrollingSpeed * (-1) * Time.deltaTime, 0f, 0f);
+                Background[i].Translate(-ScrollingSpeed * Time.deltaTime, 0f, 0f);
 
             if (Background[firstIndex].position.x < ChangePosition)
             {

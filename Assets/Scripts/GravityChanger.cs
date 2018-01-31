@@ -9,12 +9,14 @@ public class GravityChanger : MonoBehaviour {
 
 	public GameObject[] GhostsGameObjects;
 	public SpriteRenderer[] GhostsSpriteRenderers;
-	public ScrollingBackground ObstaclesScrollingBackgrounds;
+	public ScrollingObstacles ObstaclesScrollingBackgrounds;
 
 	public ParticleSystem LowerParticleSystem;
 	public ParticleSystem HigherParticleSystem;
 
 	public static bool started = false;
+
+	public AudioSource[] JumpEffects;
 
     private Rigidbody2D rb;
     private bool grounded = false;
@@ -91,7 +93,7 @@ public class GravityChanger : MonoBehaviour {
 		for(int i = 0; i < GhostsGameObjects.Length; i++)
 		{
 			if(GhostsGameObjects[i].activeSelf)
-				GhostsGameObjects[i].transform.Translate(ObstaclesScrollingBackgrounds.ScrollingSpeed * (-1) * Time.deltaTime, 0f, 0f);
+				GhostsGameObjects[i].transform.Translate(-ObstaclesScrollingBackgrounds.ObstaclesSpeed * Time.deltaTime, 0f, 0f);
 		}
 	}
 
@@ -99,6 +101,16 @@ public class GravityChanger : MonoBehaviour {
     {
         if(grounded)
         {
+			
+			for(int i = 0; i < JumpEffects.Length; i++)
+			{
+				if(!JumpEffects[i].isPlaying)
+				{
+					JumpEffects[i].Play();
+					break;
+				}
+			}
+
             rb.velocity = Vector2.zero;
             Physics2D.gravity = new Vector2(Physics2D.gravity.x, Physics2D.gravity.y * -1);
             SpriteRednerer.flipY = !SpriteRednerer.flipY;
@@ -119,6 +131,7 @@ public class GravityChanger : MonoBehaviour {
 			GhostsGameObjects[i].transform.position = this.transform.position;
 			GhostsGameObjects[i].transform.rotation = this.transform.rotation;
 			GhostsSpriteRenderers[i].sprite = this.SpriteRednerer.sprite;
+			GhostsSpriteRenderers[i].flipY = this.SpriteRednerer.flipY;
 			GhostsGameObjects[i].SetActive(true);
 
 			yield return new WaitForSeconds(0.15f);
